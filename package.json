@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "Web browser extensions for Qiita and Qiita:Team.",
   "scripts": {
-    "build": "(rm -rf dist/chrome/* || 0) && mkdir -p dist/chrome/html && mkdir -p dist/chrome/js && mkdir -p dist/chrome/images && cp src/chrome/manifest.json dist/chrome/manifest.json && cp src/chrome/html/* dist/chrome/html && cp src/chrome/images/* dist/chrome/images && browserify src/chrome/js/background.js -o dist/chrome/js/background.js"
+    "build": "(rm -rf dist/chrome/* || 0) && mkdir -p dist/chrome/html && mkdir -p dist/chrome/js && mkdir -p dist/chrome/images && cp src/chrome/manifest.json dist/chrome/manifest.json && cp src/chrome/html/* dist/chrome/html && cp src/chrome/images/* dist/chrome/images && browserify src/chrome/js/background.js -t babelify -o dist/chrome/js/background.js"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,12 @@
     "url": "https://github.com/increments/qiita-browser-extensions/issues"
   },
   "homepage": "https://github.com/increments/qiita-browser-extensions",
-  "dependencies": {
-    "browserify": "^13.0.1"
+  "devDependencies": {
+    "babel-core": "^6.10.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-3": "^6.11.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "object-assign": "^4.1.0"
   }
 }
