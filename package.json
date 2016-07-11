@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "Web browser extensions for Qiita and Qiita:Team.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "(rm -rf dist/chrome/* || 0) && mkdir -p dist/chrome/html && mkdir -p dist/chrome/js && mkdir -p dist/chrome/images && cp src/chrome/manifest.json dist/chrome/manifest.json && cp src/chrome/html/* dist/chrome/html && cp src/chrome/images/* dist/chrome/images && browserify src/chrome/js/background.js -o dist/chrome/js/background.js"
   },
   "repository": {
     "type": "git",
@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/increments/qiita-browser-extensions/issues"
   },
-  "homepage": "https://github.com/increments/qiita-browser-extensions"
+  "homepage": "https://github.com/increments/qiita-browser-extensions",
+  "dependencies": {
+    "browserify": "^13.0.1"
+  }
 }

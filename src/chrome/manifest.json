@@ -2,27 +2,26 @@
   "manifest_version": 2,
   "name": "Qiita",
   "version": "0.0.1",
-  "default_locale": "ja",
   "description": "Web browser extensions for Qiita and Qiita:Team.",
   "author": "Increments Inc.",
   "short_name": "Qiita",
   "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
   },
   "background": {
     "persistent": true,
     "scripts": [
-      "background.js"
+      "js/background.js"
     ]
   },
   "browser_action": {
     "default_action": {
-      "19": "icon19.png"
+      "19": "images/icon19.png"
     },
     "default_title": "Qiita",
-    "default_popup": "popup.html"
+    "default_popup": "html/popup.html"
   },
   "permissions": [
     "cookies",
@@ -30,6 +29,6 @@
     "http://*.qiita.com/*",
     "http://qiita.com/*",
     "https://*.qiita.com/*",
-    "https://qiita.com/*",
+    "https://qiita.com/*"
   ]
 }
