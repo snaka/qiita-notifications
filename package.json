@@ -1,0 +1,23 @@
+{
+  "name": "qiita-browser-extensions",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Web browser extensions for Qiita and Qiita:Team.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/increments/qiita-browser-extensions"
+  },
+  "keywords": [
+    "Qiita",
+    "Qiita:Team"
+  ],
+  "author": "Ryo Nakamura <r7kamura@gmail.com> (https://github.com/r7kamura)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/increments/qiita-browser-extensions/issues"
+  },
+  "homepage": "https://github.com/increments/qiita-browser-extensions"
+}
