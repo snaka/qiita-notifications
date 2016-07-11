@@ -27,5 +27,8 @@
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "object-assign": "^4.1.0"
+  },
+  "dependencies": {
+    "whatwg-fetch": "^1.0.0"
   }
 }

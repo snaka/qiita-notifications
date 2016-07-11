@@ -1,2 +1,2 @@
 # qiita-browser-extensions
-Web browser extensions for Qiita and Qiita:Team.
+Official browser extensions for Qiita and Qiita:Team.
