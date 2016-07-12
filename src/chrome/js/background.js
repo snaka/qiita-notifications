@@ -9,8 +9,8 @@ class BadgeView {
   }
 
   getText() {
-    if (this.props.notifications && this.props.notifications.totalCount > 0) {
-      return this.props.notifications.totalCount.toString();
+    if (this.props.notifications && this.props.totalCount > 0) {
+      return this.props.totalCount.toString();
     } else {
       return '';
     }
@@ -33,8 +33,9 @@ class BadgeView {
 
 const process = new BackgroundProcess();
 const badgeView = new BadgeView();
-process.onStateChanged(({ notifications }) => {
+process.onStateChanged(({ notifications, totalCount }) => {
   badgeView.props.notifications = notifications;
+  badgeView.props.totalCount = totalCount;
   badgeView.render();
 });
 process.start();

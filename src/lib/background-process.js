@@ -1,4 +1,4 @@
-import { getNotifications } from './qiita-client';
+import { getUnreadNotifications } from './qiita-client';
 
 class BackgroundProcessStore {
   constructor() {
@@ -26,7 +26,7 @@ class BackgroundProcessStore {
   }
 }
 
-const timeInterval = 5 * 1000;
+const timeInterval = 1 * 1000;
 
 export default class BackgroundProcess {
   constructor() {
@@ -43,12 +43,11 @@ export default class BackgroundProcess {
   start() {
     setInterval(
       () => {
-        // getNotifications().then(({ notifications }) => {
-        //   this.store.setState({ notifications });
-        // }).catch((error) => {
-        //   console.error(error);
-        // });
-        this.store.setState({ notifications: { totalCount: 1 } });
+        getUnreadNotifications().then(({ notifications, totalCount }) => {
+          this.store.setState({ notifications, totalCount });
+        }).catch((error) => {
+          console.error(error);
+        });
       },
       timeInterval
     );

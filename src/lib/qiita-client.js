@@ -1,26 +1,24 @@
-import 'whatwg-fetch';
+import jQuery from 'jquery'
 
-const notificationsUrl = 'http://qiita.com/api/internal/notifications';
+const notificationsUrl = 'https://qiita.com/api/internal/notifications';
 
 /**
  * @returns {Promise}
  */
-export const getNotifications = () => {
-  return fetch(
+export const getUnreadNotifications = () => {
+  return jQuery.get(
     notificationsUrl,
     {
       credentials: 'include'
     }
-  ).then((response) => {
-    if (response.status === 200) {
-      return response.json().then((notifications) => {
-        notifications.totalCount = parseInt(response.headers['Total-Count']);
-        return notifications;
+  ).then((notifications, textStatus, jqXHR) => {
+    if (jqXHR.status === 200) {
+      return Promise.resolve({
+        notifications,
+        totalCount: parseInt(jqXHR.getResponseHeader('Total-Count'))
       });
     } else {
-      const error = new Error(response.statusText);
-      error.response = response;
-      throw error;
+      return Promise.reject(textStatus);
     }
   });
 };
