@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "description": "Web browser extensions for Qiita and Qiita:Team.",
   "scripts": {
-    "build": "(rm -rf dist/chrome/* || 0) && mkdir -p dist/chrome/html && mkdir -p dist/chrome/js && mkdir -p dist/chrome/images && cp src/chrome/manifest.json dist/chrome/manifest.json && cp src/chrome/html/* dist/chrome/html && cp src/chrome/images/* dist/chrome/images && browserify src/chrome/js/background.js -t babelify -o dist/chrome/js/background.js"
+    "build": "(rm -rf dist/chrome/* || 0) && mkdir -p dist/chrome/html && mkdir -p dist/chrome/js && mkdir -p dist/chrome/css && mkdir -p dist/chrome/images && cp src/chrome/manifest.json dist/chrome/manifest.json && cp src/chrome/html/* dist/chrome/html && cp src/chrome/css/* dist/chrome/css && cp src/chrome/images/* dist/chrome/images && browserify src/chrome/js/background.js -t babelify -o dist/chrome/js/background.js"
   },
   "repository": {
     "type": "git",
@@ -28,7 +28,5 @@
     "browserify": "^13.0.1",
     "object-assign": "^4.1.0"
   },
-  "dependencies": {
-    "jquery": "^3.1.0"
-  }
+  "dependencies": {}
 }

@@ -1,24 +1,27 @@
-import jQuery from 'jquery'
-
-const notificationsUrl = 'https://qiita.com/api/internal/notifications';
+// const notificationsUrl = 'https://qiita.com/api/internal/notifications';
+const notificationsUrl = 'http://qiita.test:3000/api/internal/notifications/unread';
 
 /**
  * @returns {Promise}
  */
 export const getUnreadNotifications = () => {
-  return jQuery.get(
+  return fetch(
     notificationsUrl,
     {
       credentials: 'include'
     }
-  ).then((notifications, textStatus, jqXHR) => {
-    if (jqXHR.status === 200) {
-      return Promise.resolve({
-        notifications,
-        totalCount: parseInt(jqXHR.getResponseHeader('Total-Count'))
+  ).then((response) => {
+    if (response.status === 200) {
+      return response.json().then((notifications) => {
+        return {
+          notifications,
+          totalCount: parseInt(response.headers.get('Total-Count'))
+        };
       });
     } else {
-      return Promise.reject(textStatus);
+      const error = new Error(response.statusText);
+      error.response = response;
+      throw error;
     }
   });
 };

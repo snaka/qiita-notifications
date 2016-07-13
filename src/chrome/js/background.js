@@ -19,9 +19,9 @@ class BadgeView {
   render() {
     chrome.browserAction.setBadgeBackgroundColor({
       color : [
-        0,
-        152,
-        204,
+        236,
+        67,
+        1,
         255
       ]
     });
