@@ -1,11 +1,11 @@
-import { getUnreadNotifications } from './qiita-client';
+import { getNotifications } from './qiita-client';
 
 class BackgroundProcessStore {
   constructor() {
     this.onStateChangedCallbacks = [];
     this.state = {
       notifications: [],
-      totalCount: 0
+      totalUnreadCount: 0
     };
   }
 
@@ -55,8 +55,8 @@ export default class BackgroundProcess {
   start() {
     setInterval(
       () => {
-        getUnreadNotifications().then(({ notifications, totalCount }) => {
-          this.store.setState({ notifications, totalCount });
+        getNotifications().then(({ notifications, totalUnreadCount }) => {
+          this.store.setState({ notifications, totalUnreadCount });
         }).catch((error) => {
           console.error(error);
         });

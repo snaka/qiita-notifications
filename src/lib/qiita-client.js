@@ -1,10 +1,10 @@
 // const notificationsUrl = 'https://qiita.com/api/internal/notifications';
-const notificationsUrl = 'http://qiita.test:3000/api/internal/notifications/unread';
+const notificationsUrl = 'http://qiita.test:3000/api/internal/notifications';
 
 /**
  * @returns {Promise}
  */
-export const getUnreadNotifications = () => {
+export const getNotifications = () => {
   return fetch(
     notificationsUrl,
     {
@@ -15,7 +15,7 @@ export const getUnreadNotifications = () => {
       return response.json().then((notifications) => {
         return {
           notifications,
-          totalCount: parseInt(response.headers.get('Total-Count'))
+          totalUnreadCount: parseInt(response.headers.get('Total-Unread-Count'))
         };
       });
     } else {

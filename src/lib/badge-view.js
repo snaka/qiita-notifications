@@ -7,8 +7,8 @@ export default class BadgeView {
   }
 
   getText() {
-    if (this.props.totalCount > 0) {
-      return this.props.totalCount.toString();
+    if (this.props.totalUnreadCount > 0) {
+      return this.props.totalUnreadCount.toString();
     } else {
       return '';
     }

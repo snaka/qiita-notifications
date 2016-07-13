@@ -23,6 +23,10 @@ body {
   padding: 8px;
 }
 
+.card.active {
+  background-color: #FFF8C8;
+}
+
 .card:hover {
   background-color: #E7E7E7;
 }

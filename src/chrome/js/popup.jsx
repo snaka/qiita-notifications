@@ -2,18 +2,15 @@ import moment from 'moment'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const backgroundProcess = chrome.extension.getBackgroundPage().process;
-const notifications = backgroundProcess.getState().notifications;
-
 class NotificationCard extends React.Component {
   /**
    * @returns [String]
    */
   getClassName() {
     if (this.props.notification.read) {
-      return 'card active';
-    } else {
       return 'card';
+    } else {
+      return 'card active';
     }
   }
 
@@ -35,10 +32,18 @@ class NotificationCard extends React.Component {
     }
   }
 
-  onClick() {
-    chrome.tabs.create({
-      url: this.props.notification.url
-    });
+  onClick(event) {
+    this.props.onNotificationCardClicked(
+      new CustomEvent(
+        'NotificationCardClicked',
+        {
+          detail: {
+            notification: this.props.notification,
+            originalEvent: event
+          }
+        }
+      )
+    );
   }
 
   render() {
@@ -63,13 +68,38 @@ class NotificationCard extends React.Component {
   }
 }
 
+class Container extends React.Component {
+  render() {
+    return(
+      <div>
+        {
+          this.props.notifications.map((notification) => {
+            return(
+              <NotificationCard
+                notification={notification}
+                onNotificationCardClicked={this.onNotificationCardClicked.bind(this)}
+              />
+            );
+          })
+        }
+      </div>
+    );
+  }
+
+  /**
+   * @param {CustomEvent} event
+   */
+  onNotificationCardClicked(event) {
+    chrome.tabs.create({
+      selected: false,
+      url: event.detail.notification.url
+    });
+  }
+}
+
+const notifications = chrome.extension.getBackgroundPage().process.getState().notifications;
+
 ReactDOM.render(
-  (
-    <div>
-      {
-        notifications.map(notification => <NotificationCard notification={notification}/>)
-      }
-    </div>
-  ),
+  <Container notifications={notifications} />,
   document.getElementById('container')
 );
