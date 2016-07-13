@@ -1,7 +1,5 @@
 import { getUnreadNotifications } from './qiita-client';
 
-const timeInterval = 5 * 1000;
-
 class BackgroundProcessStore {
   constructor() {
     this.onStateChangedCallbacks = [];
@@ -32,7 +30,11 @@ class BackgroundProcessStore {
 }
 
 export default class BackgroundProcess {
-  constructor() {
+  /**
+   * @param {Object} props
+   */
+  constructor(props) {
+    this.props = props;
     this.store = new BackgroundProcessStore();
   }
 
@@ -59,7 +61,7 @@ export default class BackgroundProcess {
           console.error(error);
         });
       },
-      timeInterval
+      this.props.timeInterval
     );
   }
 }

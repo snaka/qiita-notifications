@@ -1,15 +1,12 @@
 body {
+  background-color: #EEE;
+  color: #333;
   font-family: arial, sans-serif;
   font-size: 13px;
-  line-height: 1.4;
+  line-height: 1.5;
   margin: 0;
-  padding: 0;
-  width: 500px;
-}
-
-#container {
-  background-color: #EEE;
   padding: 8px;
+  width: 500px;
 }
 
 .avatar-image {
@@ -27,14 +24,22 @@ body {
 }
 
 .card:hover {
-  background-color: #DDD;
+  background-color: #E7E7E7;
 }
 
 .card:last-child {
   margin-bottom: 0;
 }
 
+.color-black {
+  color: #000;
+}
+
+.color-gray {
+  color: #999;
+}
+
 .pull-left {
   float: left;
-  margin-right: 8px;
+  margin-right: 10px;
 }
