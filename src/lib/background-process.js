@@ -5,7 +5,10 @@ const timeInterval = 5 * 1000;
 class BackgroundProcessStore {
   constructor() {
     this.onStateChangedCallbacks = [];
-    this.state = {};
+    this.state = {
+      notifications: [],
+      totalCount: 0
+    };
   }
 
   /**
@@ -31,6 +34,13 @@ class BackgroundProcessStore {
 export default class BackgroundProcess {
   constructor() {
     this.store = new BackgroundProcessStore();
+  }
+
+  /**
+   * @return {Object}
+   */
+  getState() {
+    return this.store.state;
   }
 
   /**

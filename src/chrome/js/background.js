@@ -9,7 +9,7 @@ class BadgeView {
   }
 
   getText() {
-    if (this.props.notifications && this.props.totalCount > 0) {
+    if (this.props.totalCount > 0) {
       return this.props.totalCount.toString();
     } else {
       return '';
@@ -31,11 +31,11 @@ class BadgeView {
   }
 }
 
-const process = new BackgroundProcess();
+window.process = new BackgroundProcess();
 const badgeView = new BadgeView();
-process.onStateChanged(({ notifications, totalCount }) => {
+window.process.onStateChanged(({ notifications, totalCount }) => {
   badgeView.props.notifications = notifications;
   badgeView.props.totalCount = totalCount;
   badgeView.render();
 });
-process.start();
+window.process.start();
