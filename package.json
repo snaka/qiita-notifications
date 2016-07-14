@@ -1,8 +1,8 @@
 {
-  "name": "qiita-browser-extensions",
+  "name": "Qiita Notifications",
   "private": true,
   "version": "0.0.1",
-  "description": "Web browser extensions for Qiita and Qiita:Team.",
+  "description": "Displays your unread Qiita notifications count and list recent notifications.",
   "scripts": {
     "build": "npm run build:rm && npm run build:mkdir && npm run build:cp && npm run build:browserify",
     "build:browserify": "browserify src/chrome/js/background.js -t babelify -o dist/chrome/js/background.js && browserify src/chrome/js/popup.jsx -t babelify -o dist/chrome/js/popup.js",
