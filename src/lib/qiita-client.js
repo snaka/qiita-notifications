@@ -6,7 +6,8 @@ const get = (path) => {
   return fetch(
     `${getBaseUrl()}${path}`,
     {
-      credentials: 'include'
+      credentials: 'include',
+      mode: 'no-cors',
     }
   ).then((response) => {
     if (response.status === 200) {

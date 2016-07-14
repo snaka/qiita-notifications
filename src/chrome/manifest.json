@@ -26,6 +26,6 @@
   "permissions": [
     "cookies",
     "tabs",
-    "http://qiita.test:3000/*"
+    "https://qiita.com/*"
   ]
 }
