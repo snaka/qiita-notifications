@@ -1,22 +1,17 @@
+import jQuery from 'jquery';
+
 /**
  * @param {String} path
  * @returns {Promise}
  */
 const get = (path) => {
-  return fetch(
-    `${getBaseUrl()}${path}`,
-    {
+  return new Promise((done, fail) => {
+    jQuery.ajax({
       credentials: 'include',
-      mode: 'no-cors',
-    }
-  ).then((response) => {
-    if (response.status === 200) {
-      return response.json();
-    } else {
-      const error = new Error(response.statusText);
-      error.response = response;
-      throw error;
-    }
+      method: 'GET',
+      type: 'json',
+      url: `${getBaseUrl()}${path}`,
+    }).done(done).fail(fail);
   });
 };
 
