@@ -79,14 +79,14 @@ class NotificationCard extends React.Component {
         <div className="pull-left margin-right-10">
           <img src={this.props.notification.sender.profile_image_url} height="48" width="48" className="avatar-image" />
         </div>
-        <div className="pull-right margin-left-4">
-          <i className={`fa fa-fw fa-${this.getIconName()}`} />
-        </div>
-        <div>
+        <div className="card-body">
+          <div className="pull-right margin-left-4">
+            <i className={`fa fa-fw fa-${this.getIconName()}`} />
+          </div>
           <div>
             @{this.props.notification.sender.url_name}
           </div>
-          <div className="color-black" style={{ fontSize: "14px" }}>
+          <div className="color-black text-ellipsis" style={{ fontSize: "14px" }}>
             {this.props.notification.title}
           </div>
           <div className="color-gray">

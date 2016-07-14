@@ -17,7 +17,6 @@ body {
   background-color: #FFF;
   border-radius: 3px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, .15);
-  clear: both;
   cursor: pointer;
   margin-bottom: 8px;
   padding: 8px;
@@ -33,6 +32,10 @@ body {
 
 .card:last-child {
   margin-bottom: 0;
+}
+
+.card-body {
+  overflow: hidden;
 }
 
 .color-black {
@@ -57,4 +60,10 @@ body {
 
 .pull-right {
   float: right;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
