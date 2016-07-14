@@ -11,11 +11,10 @@ const badgeColor = [
 const timeInterval = 10 * 60 * 1000;
 
 window.process = new BackgroundProcess({ timeInterval });
-window.process.onStateChanged(({ notifications, totalUnreadCount }) => {
+window.process.onStateChanged(({ unreadNotificationsCount }) => {
   new BadgeView({
     badgeColor,
-    notifications,
-    totalUnreadCount
+    unreadNotificationsCount
   }).render();
 });
 window.process.start();

@@ -1,11 +1,10 @@
-import { getNotifications } from './qiita-client';
+import { getNotifications, getUnreadNotificationsCount } from './qiita-client';
 
 class BackgroundProcessStore {
   constructor() {
     this.onStateChangedCallbacks = [];
     this.state = {
-      notifications: [],
-      totalUnreadCount: 0
+      unreadNotificationsCount: 0
     };
   }
 
@@ -39,7 +38,14 @@ export default class BackgroundProcess {
   }
 
   /**
-   * @return {Object}
+   * @returns {Promise}
+   */
+  getNotifications() {
+    return getNotifications();
+  }
+
+  /**
+   * @returns {Object}
    */
   getState() {
     return this.store.state;
@@ -53,15 +59,15 @@ export default class BackgroundProcess {
   }
 
   start() {
-    setInterval(
-      () => {
-        getNotifications().then(({ notifications, totalUnreadCount }) => {
-          this.store.setState({ notifications, totalUnreadCount });
-        }).catch((error) => {
-          console.error(error);
-        });
-      },
-      this.props.timeInterval
-    );
+    this.update();
+    setInterval(this.update.bind(this), this.props.timeInterval);
+  }
+
+  update() {
+    getUnreadNotificationsCount().then((unreadNotificationsCount) => {
+      this.store.setState({ unreadNotificationsCount: unreadNotificationsCount.value });
+    }).catch((error) => {
+      console.error(error);
+    });
   }
 }

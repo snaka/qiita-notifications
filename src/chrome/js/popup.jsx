@@ -22,7 +22,34 @@ class NotificationCard extends React.Component {
   }
 
   /**
-   * @return {String}
+   * @returns {String}
+   */
+  getIconName() {
+    return ({
+      AdventCalendarInvitationNotification: 'calendar',
+      AdventCalendarItemNotification: 'calendar',
+      AdventCalendarItemReminderNotification: 'calendar',
+      CommentMentionNotification: 'at',
+      FollowingUserNotification: 'user-plus',
+      LgtmNotification: 'thumbs-o-up',
+      PatchAcceptanceNotification: 'code-fork',
+      PatchNotification: 'code-fork',
+      ProjectPageMentionNotification: 'at',
+      PublicDomainArticleMentionNotification: 'at',
+      PublicReferenceNotification: 'reply',
+      ReplyCommentNotification: 'comment-o',
+      StockedItemUpdateNotification: 'folder-open-o',
+      StockItemNotification: 'folder-open-o',
+      TeamArticleMentionNotification: 'at',
+      TeamReferenceNotification: 'reply',
+      ThankNotification: 'thumbs-up',
+      ThreadCommentNotification: 'comment-o',
+      TweetNotification: 'twitter',
+    })[this.props.notification.type] || 'question-circle-o';
+  }
+
+  /**
+   * @returns {String}
    */
   getTeamName() {
     if (this.props.notification.team) {
@@ -49,8 +76,11 @@ class NotificationCard extends React.Component {
   render() {
     return(
       <div className={this.getClassName()} onClick={this.onClick.bind(this)}>
-        <div className="pull-left">
+        <div className="pull-left margin-right-10">
           <img src={this.props.notification.sender.profile_image_url} height="48" width="48" className="avatar-image" />
+        </div>
+        <div className="pull-right margin-left-4">
+          <i className={`fa fa-fw fa-${this.getIconName()}`} />
         </div>
         <div>
           <div>
@@ -69,18 +99,32 @@ class NotificationCard extends React.Component {
 }
 
 class Container extends React.Component {
+  constructor(...args) {
+    super(...args);
+    this.state = { notifications: null };
+    chrome.extension.getBackgroundPage().process.getNotifications().then((notifications) => {
+      this.setState({ notifications });
+    });
+  }
+
   render() {
     return(
       <div>
         {
-          this.props.notifications.map((notification) => {
-            return(
-              <NotificationCard
-                notification={notification}
-                onNotificationCardClicked={this.onNotificationCardClicked.bind(this)}
-              />
-            );
-          })
+          (() => {
+            if (this.state.notifications) {
+              return this.state.notifications.map((notification) => {
+                return(
+                  <NotificationCard
+                    notification={notification}
+                    onNotificationCardClicked={this.onNotificationCardClicked.bind(this)}
+                  />
+                );
+              })
+            } else {
+              return 'Loading...';
+            }
+          })()
         }
       </div>
     );
@@ -97,9 +141,7 @@ class Container extends React.Component {
   }
 }
 
-const notifications = chrome.extension.getBackgroundPage().process.getState().notifications;
-
 ReactDOM.render(
-  <Container notifications={notifications} />,
+  <Container />,
   document.getElementById('container')
 );
