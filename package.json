@@ -9,6 +9,8 @@
     "build:cp": "cp src/chrome/manifest.json dist/chrome/manifest.json && cp src/chrome/html/* dist/chrome/html && cp src/chrome/css/* dist/chrome/css && cp src/chrome/images/* dist/chrome/images",
     "build:mkdir": "mkdir -p dist/chrome/html && mkdir -p dist/chrome/js && mkdir -p dist/chrome/css && mkdir -p dist/chrome/images",
     "build:rm": "rm -rf dist/chrome/* || 0",
+    "pack": "npm run build && npm run pack:crx",
+    "pack:crx": "crx pack dist/chrome -o dist/chrome/qiita-notifications.crx",
     "watch": "npm run watch:cp & npm run watch:background & npm run watch:popup",
     "watch:background": "watchify src/chrome/js/background.js -t babelify -o dist/chrome/js/background.js -v",
     "watch:cp": "watch 'npm run build:cp' src/chrome/html src/chrome/css src/chrome/images",
@@ -36,6 +38,7 @@
     "babel-preset-stage-3": "^6.11.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
+    "crx": "^3.0.3",
     "object-assign": "^4.1.0",
     "watchify": "^3.7.0"
   },
