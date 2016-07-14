@@ -8,7 +8,7 @@ const badgeColor = [
   1,
   255
 ];
-const timeInterval = 5 * 1000;
+const timeInterval = 10 * 60 * 1000;
 
 window.process = new BackgroundProcess({ timeInterval });
 window.process.onStateChanged(({ notifications, totalUnreadCount }) => {
