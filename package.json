@@ -11,7 +11,7 @@
     "build:rm": "rm -rf dist/chrome/* || 0",
     "build:scss": "node-sass src/chrome/scss -o dist/chrome/css",
     "pack": "npm run build && npm run pack:crx",
-    "pack:crx": "crx pack dist/chrome -o dist/chrome/qiita-notifications.crx",
+    "pack:crx": "crx pack dist/chrome -o dist/chrome/qiita-notifications.crx && rm dist/chrome/key.pem",
     "watch": "npm run watch:cp & npm run watch:background & npm run watch:popup & npm run watch:scss",
     "watch:background": "watchify src/chrome/js/background.js -t babelify -o dist/chrome/js/background.js -v",
     "watch:cp": "watch 'npm run build:cp' src/chrome/html src/chrome/images",
