@@ -18,7 +18,34 @@ class NotificationCard extends React.Component {
    * @returns {String}
    */
   getCreatedAt() {
-    return moment(this.props.notification.created_at).format('YYYY-MM-DD hh:mm');
+    return moment(this.props.notification.created_at).fromNow();
+  }
+
+  /**
+   * @returns {String}
+   */
+  getIconColor() {
+    return ({
+      AdventCalendarInvitationNotification: '#CCC',
+      AdventCalendarItemNotification: '#CCC',
+      AdventCalendarItemReminderNotification: '#CCC',
+      CommentMentionNotification: '#D4174E',
+      FollowingUserNotification: '#4FA0F7',
+      LgtmNotification: '#F0AA00',
+      PatchAcceptanceNotification: '#6A5397',
+      PatchNotification: '#83C72D',
+      ProjectPageMentionNotification: '#D4174E',
+      PublicDomainArticleMentionNotification: '#D4174E',
+      PublicReferenceNotification: '#CCC',
+      ReplyCommentNotification: '#E1640E',
+      StockedItemUpdateNotification: '#63D080',
+      StockItemNotification: '#63D080',
+      TeamArticleMentionNotification: '#D4174E',
+      TeamReferenceNotification: '#CCC',
+      ThankNotification: '#F0AA00',
+      ThreadCommentNotification: '#E1640E',
+      TweetNotification: '#60B4F1',
+    })[this.props.notification.type] || '#CCC';
   }
 
   /**
@@ -59,6 +86,33 @@ class NotificationCard extends React.Component {
     }
   }
 
+  /**
+   * @returns {String}
+   */
+  getVerb() {
+    return ({
+      AdventCalendarInvitationNotification: 'invited',
+      AdventCalendarItemNotification: 'registered to calendar',
+      AdventCalendarItemReminderNotification: 'reminded',
+      CommentMentionNotification: 'mentioned',
+      FollowingUserNotification: 'followed',
+      LgtmNotification: 'liked',
+      PatchAcceptanceNotification: 'accepted patch',
+      PatchNotification: 'patched',
+      ProjectPageMentionNotification: 'mentioned',
+      PublicDomainArticleMentionNotification: 'mentioned',
+      PublicReferenceNotification: 'referenced',
+      ReplyCommentNotification: 'commented',
+      StockedItemUpdateNotification: 'updated',
+      StockItemNotification: 'stocked',
+      TeamArticleMentionNotification: 'mentioned',
+      TeamReferenceNotification: 'referenced',
+      ThankNotification: 'thanked',
+      ThreadCommentNotification: 'commented',
+      TweetNotification: 'tweeted',
+    })[this.props.notification.type] || 'question-circle-o';
+  }
+
   onClick(event) {
     this.props.onNotificationCardClicked(
       new CustomEvent(
@@ -73,24 +127,29 @@ class NotificationCard extends React.Component {
     );
   }
 
+  // <img src={this.props.notification.sender.profile_image_url} height="48" width="48" className="avatar-image" />
   render() {
     return(
       <div className={this.getClassName()} onClick={this.onClick.bind(this)}>
         <div className="pull-left margin-right-10">
-          <img src={this.props.notification.sender.profile_image_url} height="48" width="48" className="avatar-image" />
+          <i className={`card-icon fa fa-fw fa-${this.getIconName()}`} style={{ backgroundColor: this.getIconColor() }} />
         </div>
         <div className="card-body">
-          <div className="pull-right margin-left-4">
-            <i className={`fa fa-fw fa-${this.getIconName()}`} />
+          <div className="pull-right color-gray margin-left-4">
+            {this.getCreatedAt()}
           </div>
-          <div>
-            @{this.props.notification.sender.url_name}
+          <div className="margin-bottom-4">
+            <img src={this.props.notification.sender.profile_image_url} height="20" width="20" className="avatar-image" />
+            <span className="font-bold margin-right-4">
+              {this.props.notification.sender.url_name}
+            </span>
+            {this.getVerb()}
           </div>
-          <div className="color-black text-ellipsis" style={{ fontSize: "14px" }}>
+          <div className="text-ellipsis" style={{ fontSize: "14px" }}>
             {this.props.notification.title}
           </div>
           <div className="color-gray">
-            {this.getCreatedAt()} on {this.getTeamName()}
+            {this.getTeamName()}
           </div>
         </div>
       </div>

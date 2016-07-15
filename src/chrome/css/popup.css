@@ -11,6 +11,8 @@ body {
 
 .avatar-image {
   border-radius: 3px;
+  margin-right: 4px;
+  vertical-align: -5px;
 }
 
 .card {
@@ -38,6 +40,21 @@ body {
   overflow: hidden;
 }
 
+.card-description {
+  margin-bottom: 4px;
+  line-height: 20px;
+}
+
+.card-icon {
+  border-radius: 3px;
+  color: #FFF;
+  display: block;
+  font-size: 28px !important;
+  height: 48px !important;
+  line-height: 48px !important;
+  width: 48px !important;
+}
+
 .color-black {
   color: #000;
 }
@@ -46,8 +63,20 @@ body {
   color: #999;
 }
 
+.font-bold {
+  font-weight: bold;
+}
+
+.margin-bottom-4 {
+  margin-bottom: 4px;
+}
+
 .margin-left-4 {
   margin-left: 4px;
+}
+
+.margin-right-4 {
+  margin-right: 4px;
 }
 
 .margin-right-10 {
