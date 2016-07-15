@@ -1,6 +1,8 @@
 # Qiita Notifications
 The code that powers Qiita Notifications.
 
+![screenshot](/images/screenshot.png)
+
 ## Install
 See https://github.com/increments/qiita-notifications/releases.
 
