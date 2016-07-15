@@ -127,7 +127,6 @@ class NotificationCard extends React.Component {
     );
   }
 
-  // <img src={this.props.notification.sender.profile_image_url} height="48" width="48" className="avatar-image" />
   render() {
     return(
       <div className={this.getClassName()} onClick={this.onClick.bind(this)}>
