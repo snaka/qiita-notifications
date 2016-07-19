@@ -1,4 +1,4 @@
-import jQuery from 'jquery';
+import jQuery from "jquery";
 
 /**
  * @param {String} path
@@ -7,9 +7,9 @@ import jQuery from 'jquery';
 const get = (path) => {
   return new Promise((done, fail) => {
     jQuery.ajax({
-      credentials: 'include',
-      method: 'GET',
-      type: 'json',
+      credentials: "include",
+      method: "GET",
+      type: "json",
       url: `${getBaseUrl()}${path}`,
     }).done(done).fail(fail);
   });
@@ -19,19 +19,19 @@ const get = (path) => {
  * @returns {String}
  */
 const getBaseUrl = () => {
-  return process.env.QIITA_BASE_URL || 'https://qiita.com';
+  return process.env.QIITA_BASE_URL || "https://qiita.com";
 };
 
 /**
  * @returns {Promise}
  */
 export const getNotifications = () => {
-  return get('/api/internal/notifications');
+  return get("/api/internal/notifications");
 };
 
 /**
  * @returns {Promise}
  */
 export const getUnreadNotificationsCount = () => {
-  return get('/api/internal/unread_notifications_count');
+  return get("/api/internal/unread_notifications_count");
 };

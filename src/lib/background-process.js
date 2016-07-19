@@ -1,4 +1,4 @@
-import { getNotifications, getUnreadNotificationsCount } from './qiita-client';
+import { getNotifications, getUnreadNotificationsCount } from "./qiita-client";
 
 class BackgroundProcessStore {
   constructor() {

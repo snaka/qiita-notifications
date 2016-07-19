@@ -10,7 +10,7 @@ export default class BadgeView {
     if (this.props.unreadNotificationsCount > 0) {
       return this.props.unreadNotificationsCount.toString();
     } else {
-      return '';
+      return "";
     }
   }
 
