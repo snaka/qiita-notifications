@@ -143,12 +143,12 @@ class NotificationCard extends React.Component {
               {this.props.notification.sender.url_name}
             </span>
             {this.getVerb()}
+            <span className="color-gray margin-left-4">
+              on {this.getTeamName()}
+            </span>
           </div>
           <div className="text-ellipsis" style={{ fontSize: "14px" }}>
             {this.props.notification.title}
-          </div>
-          <div className="color-gray">
-            {this.getTeamName()}
           </div>
         </div>
       </div>
