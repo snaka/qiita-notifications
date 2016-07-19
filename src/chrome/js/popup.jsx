@@ -162,6 +162,7 @@ class Container extends React.Component {
     super(...args);
     this.state = { notifications: null };
     chrome.runtime.getBackgroundPage((background) => {
+      background.process.update();
       background.process.getNotifications().then((notifications) => {
         this.setState({ notifications });
       });
