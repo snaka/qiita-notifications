@@ -1,7 +1,6 @@
 import BackgroundProcess from "../../lib/background-process";
 import BadgeView from "../../lib/badge-view";
 
-
 const badgeColor = [
   236,
   67,
