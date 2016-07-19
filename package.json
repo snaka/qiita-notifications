@@ -1,7 +1,7 @@
 {
   "name": "qiita-notifications",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Displays unread Qiita notifications count and list recent notifications.",
   "scripts": {
     "build": "npm run build:rm && npm run build:mkdir && npm run build:cp && npm run build:scss && npm run build:browserify",
