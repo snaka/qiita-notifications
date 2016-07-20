@@ -20,7 +20,8 @@
     "default_action": {
       "19": "images/icon19.png"
     },
-    "default_title": "Qiita",
+    "default_icon": "images/icon19.png",
+    "default_title": "Qiita Notifications",
     "default_popup": "html/popup.html"
   },
   "permissions": [

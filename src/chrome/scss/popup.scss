@@ -95,3 +95,9 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@-moz-document url-prefix() {
+  body {
+    height: 500px;
+  }
+}
