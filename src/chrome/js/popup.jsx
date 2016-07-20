@@ -196,7 +196,7 @@ class Container extends React.Component {
    */
   onNotificationCardClicked(event) {
     chrome.tabs.create({
-      selected: false,
+      active: false,
       url: event.detail.notification.url
     });
   }
