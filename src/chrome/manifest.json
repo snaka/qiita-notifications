@@ -11,7 +11,7 @@
     "128": "images/icon128.png"
   },
   "background": {
-    "persistent": true,
+    "persistent": false,
     "scripts": [
       "js/background.js"
     ]
@@ -24,6 +24,7 @@
     "default_popup": "html/popup.html"
   },
   "permissions": [
+    "alarms",
     "cookies",
     "tabs",
     "https://qiita.com/*"
