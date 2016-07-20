@@ -1,3 +1,7 @@
+## 0.0.4
+- Support Firefox
+- Use Event Pages instead of Background Pages
+
 ## 0.0.3
 - Merge the 1st and 3rd line
 - Minimize action type icon size
