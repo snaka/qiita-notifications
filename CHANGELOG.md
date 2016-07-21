@@ -1,3 +1,8 @@
+## 0.1.0
+- Use `en` as default locale
+- Support Japanese language
+- Support various notification types
+
 ## 0.0.4
 - Support Firefox
 - Use Event Pages instead of Background Pages
