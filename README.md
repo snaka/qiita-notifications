@@ -1,4 +1,4 @@
-# Qiita Notifications
+# Qiita Notifications [![Build Status](https://travis-ci.org/increments/qiita-notifications.svg?branch=master)](https://travis-ci.org/increments/qiita-notifications)
 Web browser extensions for Qiita notifications.
 
 ![screenshot](/images/screenshot.png)
