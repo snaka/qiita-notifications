@@ -1,6 +1,7 @@
 import moment from 'moment'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import 'moment/locale/ja'
 
 class NotificationCard extends React.Component {
   /**
@@ -214,7 +215,37 @@ class Container extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Container />,
-  document.getElementById('container')
-);
+/**
+ * @returns {Promise}
+ */
+const detectLanguageCode = () => {
+  if (chrome.i18n.getUILanguage) {
+    return Promise.resolve(chrome.i18n.getUILanguage());
+  } else {
+    return new Promise((done) => {
+      chrome.i18n.getAcceptLanguages((languageCodes) => {
+        done(languageCodes[0]);
+      });
+    });
+  }
+};
+
+/**
+ * @returns {Promise}
+ */
+const loadMomentLocale = () => {
+  return detectLanguageCode().then((languageCode) => {
+    if (languageCode === 'ja') {
+      moment.locale('ja');
+    } else {
+      moment.locale('en');
+    }
+  });
+};
+
+loadMomentLocale().then(() => {
+  ReactDOM.render(
+    <Container />,
+    document.getElementById('container')
+  );
+});
