@@ -1,7 +1,7 @@
-import moment from 'moment'
-import React from 'react'
-import ReactDOM from 'react-dom'
-import 'moment/locale/ja'
+import moment from "moment";
+import React from "react";
+import ReactDOM from "react-dom";
+import "moment/locale/ja";
 
 class NotificationCard extends React.Component {
   /**
@@ -9,9 +9,9 @@ class NotificationCard extends React.Component {
    */
   getClassName() {
     if (this.props.notification.read) {
-      return 'card';
+      return "card";
     } else {
-      return 'card active';
+      return "card active";
     }
   }
 
@@ -27,30 +27,30 @@ class NotificationCard extends React.Component {
    */
   getIconColor() {
     return ({
-      AdventCalendarInvitationNotification: '#CCC',
-      AdventCalendarItemNotification: '#CCC',
-      AdventCalendarItemReminderNotification: '#CCC',
-      CommentMentionNotification: '#D4174E',
-      FollowingUserNotification: '#4FA0F7',
-      LgtmNotification: '#F0AA00',
-      PatchAcceptanceNotification: '#6A5397',
-      PatchNotification: '#83C72D',
-      ProjectPageCommentReactionNotification: '#F0AA00',
-      ProjectPageMentionNotification: '#D4174E',
-      ProjectPageReactionNotification: '#F0AA00',
-      PublicDomainArticleMentionNotification: '#D4174E',
-      PublicReferenceNotification: '#CCC',
-      ReplyCommentNotification: '#E1640E',
-      StockedItemUpdateNotification: '#63D080',
-      StockItemNotification: '#63D080',
-      TeamArticleCommentReactionNotification: '#F0AA00',
-      TeamArticleMentionNotification: '#D4174E',
-      TeamArticleReactionNotification: '#F0AA00',
-      TeamReferenceNotification: '#CCC',
-      ThankNotification: '#F0AA00',
-      ThreadCommentNotification: '#E1640E',
-      TweetNotification: '#60B4F1',
-    })[this.props.notification.type] || '#CCC';
+      AdventCalendarInvitationNotification: "#CCC",
+      AdventCalendarItemNotification: "#CCC",
+      AdventCalendarItemReminderNotification: "#CCC",
+      CommentMentionNotification: "#D4174E",
+      FollowingUserNotification: "#4FA0F7",
+      LgtmNotification: "#F0AA00",
+      PatchAcceptanceNotification: "#6A5397",
+      PatchNotification: "#83C72D",
+      ProjectPageCommentReactionNotification: "#F0AA00",
+      ProjectPageMentionNotification: "#D4174E",
+      ProjectPageReactionNotification: "#F0AA00",
+      PublicDomainArticleMentionNotification: "#D4174E",
+      PublicReferenceNotification: "#CCC",
+      ReplyCommentNotification: "#E1640E",
+      StockedItemUpdateNotification: "#63D080",
+      StockItemNotification: "#63D080",
+      TeamArticleCommentReactionNotification: "#F0AA00",
+      TeamArticleMentionNotification: "#D4174E",
+      TeamArticleReactionNotification: "#F0AA00",
+      TeamReferenceNotification: "#CCC",
+      ThankNotification: "#F0AA00",
+      ThreadCommentNotification: "#E1640E",
+      TweetNotification: "#60B4F1",
+    })[this.props.notification.type] || "#CCC";
   }
 
   /**
@@ -58,30 +58,30 @@ class NotificationCard extends React.Component {
    */
   getIconName() {
     return ({
-      AdventCalendarInvitationNotification: 'calendar',
-      AdventCalendarItemNotification: 'calendar',
-      AdventCalendarItemReminderNotification: 'calendar',
-      CommentMentionNotification: 'at',
-      FollowingUserNotification: 'user-plus',
-      LgtmNotification: 'thumbs-o-up',
-      PatchAcceptanceNotification: 'code-fork',
-      PatchNotification: 'code-fork',
-      ProjectPageCommentReactionNotification: 'smile-o',
-      ProjectPageMentionNotification: 'at',
-      ProjectPageReactionNotification: 'smile-o',
-      PublicDomainArticleMentionNotification: 'at',
-      PublicReferenceNotification: 'reply',
-      ReplyCommentNotification: 'comment-o',
-      StockedItemUpdateNotification: 'folder-open-o',
-      StockItemNotification: 'folder-open-o',
-      TeamArticleCommentReactionNotification: 'smile-o',
-      TeamArticleMentionNotification: 'at',
-      TeamArticleReactionNotification: 'smile-o',
-      TeamReferenceNotification: 'reply',
-      ThankNotification: 'thumbs-up',
-      ThreadCommentNotification: 'comment-o',
-      TweetNotification: 'twitter',
-    })[this.props.notification.type] || 'question-circle';
+      AdventCalendarInvitationNotification: "calendar",
+      AdventCalendarItemNotification: "calendar",
+      AdventCalendarItemReminderNotification: "calendar",
+      CommentMentionNotification: "at",
+      FollowingUserNotification: "user-plus",
+      LgtmNotification: "thumbs-o-up",
+      PatchAcceptanceNotification: "code-fork",
+      PatchNotification: "code-fork",
+      ProjectPageCommentReactionNotification: "smile-o",
+      ProjectPageMentionNotification: "at",
+      ProjectPageReactionNotification: "smile-o",
+      PublicDomainArticleMentionNotification: "at",
+      PublicReferenceNotification: "reply",
+      ReplyCommentNotification: "comment-o",
+      StockedItemUpdateNotification: "folder-open-o",
+      StockItemNotification: "folder-open-o",
+      TeamArticleCommentReactionNotification: "smile-o",
+      TeamArticleMentionNotification: "at",
+      TeamArticleReactionNotification: "smile-o",
+      TeamReferenceNotification: "reply",
+      ThankNotification: "thumbs-up",
+      ThreadCommentNotification: "comment-o",
+      TweetNotification: "twitter",
+    })[this.props.notification.type] || "question-circle";
   }
 
   /**
@@ -91,7 +91,7 @@ class NotificationCard extends React.Component {
     if (this.props.notification.team) {
       return this.props.notification.team.name;
     } else {
-      return 'Qiita';
+      return "Qiita";
     }
   }
 
@@ -105,7 +105,7 @@ class NotificationCard extends React.Component {
   onClick(event) {
     this.props.onNotificationCardClicked(
       new CustomEvent(
-        'NotificationCardClicked',
+        "NotificationCardClicked",
         {
           detail: {
             notification: this.props.notification,
@@ -178,9 +178,9 @@ class Container extends React.Component {
                     onNotificationCardClicked={this.onNotificationCardClicked.bind(this)}
                   />
                 );
-              })
+              });
             } else {
-              return 'Loading...';
+              return "Loading...";
             }
           })()
         }
@@ -199,9 +199,9 @@ class Container extends React.Component {
   }
 }
 
-moment.locale(chrome.i18n.getMessage('currentLanguageCode'));
+moment.locale(chrome.i18n.getMessage("currentLanguageCode"));
 
 ReactDOM.render(
   <Container />,
-  document.getElementById('container')
+  document.getElementById("container")
 );
