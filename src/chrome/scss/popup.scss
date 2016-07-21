@@ -55,13 +55,23 @@ body {
     color: #000;
   }
 
-  &-gray {
+  &-light-gray {
     color: #999;
+  }
+
+  &-gray {
+    color: #666;
   }
 }
 
-.font-bold {
-  font-weight: bold;
+.font {
+  &-13 {
+    font-size: 13px;
+  }
+
+  &-bold {
+    font-weight: bold;
+  }
 }
 
 .margin {

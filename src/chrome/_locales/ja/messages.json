@@ -1,0 +1,80 @@
+{
+  "applicationDescription": {
+    "message": "Qiitaの未読通知件数と最近受け取った通知の内容を表示します。"
+  },
+  "currentLanguageCode": {
+    "message": "ja"
+  },
+  "verb_for_AdventCalendarInvitationNotification": {
+    "message": "から招待されました"
+  },
+  "verb_for_AdventCalendarItemNotification": {
+    "message": "に登録されました"
+  },
+  "verb_for_AdventCalendarItemReminderNotification": {
+    "message": "がリマインドされました"
+  },
+  "verb_for_CommentMentionNotification": {
+    "message": "にmentionされました"
+  },
+  "verb_for_FollowingUserNotification": {
+    "message": "にフォローされました"
+  },
+  "verb_for_LgtmNotification": {
+    "message": "がいいね！しました"
+  },
+  "verb_for_PatchAcceptanceNotification": {
+    "message": "が編集リクエストを受理しました"
+  },
+  "verb_for_PatchNotification": {
+    "message": "が編集リクエストを送りました"
+  },
+  "verb_for_ProjectPageCommentReactionNotification": {
+    "message": "がリアクションしました"
+  },
+  "verb_for_ProjectPageMentionNotification": {
+    "message": "がmentionされました"
+  },
+  "verb_for_ProjectPageReactionNotification": {
+    "message": "がリアクションしました"
+  },
+  "verb_for_PublicDomainArticleMentionNotification": {
+    "message": "がmentionされました"
+  },
+  "verb_for_PublicReferenceNotification": {
+    "message": "が言及しました"
+  },
+  "verb_for_ReplyCommentNotification": {
+    "message": "がコメントしました"
+  },
+  "verb_for_StockedItemUpdateNotification": {
+    "message": "が更新しました"
+  },
+  "verb_for_StockItemNotification": {
+    "message": "がストックしました"
+  },
+  "verb_for_TeamArticleCommentReactionNotification": {
+    "message": "がリアクションしました"
+  },
+  "verb_for_TeamArticleMentionNotification": {
+    "message": "がmentionされました"
+  },
+  "verb_for_TeamArticleReactionNotification": {
+    "message": "がリアクションしました"
+  },
+  "verb_for_TeamReferenceNotification": {
+    "message": "が言及しました"
+  },
+  "verb_for_ThankNotification": {
+    "message": "がThankしました"
+  },
+  "verb_for_ThreadCommentNotification": {
+    "message": "がコメントしました"
+  },
+  "verb_for_TweetNotification": {
+    "message": "記事がtweetされました"
+  },
+  "verb_for_unknown_notification_type": {
+    "message": "が何かしました"
+  }
+}

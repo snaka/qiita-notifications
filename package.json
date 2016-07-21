@@ -8,8 +8,8 @@
   "scripts": {
     "build": "npm run build:rm && npm run build:mkdir && npm run build:cp && npm run build:scss && npm run build:browserify",
     "build:browserify": "browserify src/chrome/js/background.js -t babelify -o dist/chrome/js/background.js && browserify src/chrome/js/popup.jsx -t babelify -o dist/chrome/js/popup.js",
-    "build:cp": "cp src/chrome/manifest.json dist/chrome/manifest.json && cp src/chrome/html/* dist/chrome/html && cp src/chrome/images/* dist/chrome/images",
-    "build:mkdir": "mkdir -p dist/chrome/html && mkdir -p dist/chrome/js && mkdir -p dist/chrome/css && mkdir -p dist/chrome/images",
+    "build:cp": "cp src/chrome/manifest.json dist/chrome/manifest.json && cp src/chrome/html/* dist/chrome/html && cp src/chrome/images/* dist/chrome/images && cp -r src/chrome/_locales/* dist/chrome/_locales",
+    "build:mkdir": "mkdir -p dist/chrome/html && mkdir -p dist/chrome/js && mkdir -p dist/chrome/css && mkdir -p dist/chrome/images && mkdir -p dist/chrome/_locales",
     "build:rm": "rm -rf dist/chrome/* || 0",
     "build:scss": "node-sass src/chrome/scss -o dist/chrome/css",
     "lint": "eslint src",
@@ -17,7 +17,7 @@
     "pack:crx": "crx pack dist/chrome -o dist/chrome/qiita-notifications.crx && rm dist/chrome/key.pem",
     "watch": "npm run build && npm run watch:cp & npm run watch:background & npm run watch:popup & npm run watch:scss",
     "watch:background": "watchify src/chrome/js/background.js -t babelify -o dist/chrome/js/background.js -v",
-    "watch:cp": "watch 'npm run build:cp' src/chrome/html src/chrome/images",
+    "watch:cp": "watch 'npm run build:cp' src/chrome/html src/chrome/images src/chrome/_locales",
     "watch:popup": "watchify src/chrome/js/popup.jsx -t babelify -o dist/chrome/js/popup.js -v",
     "watch:scss": "node-sass -w src/chrome/scss -o dist/chrome/css"
   },

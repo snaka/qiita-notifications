@@ -1,0 +1,80 @@
+{
+  "applicationDescription": {
+    "message": "Displays unread Qiita notifications count and list recent notifications."
+  },
+  "currentLanguageCode": {
+    "message": "en"
+  },
+  "verb_for_AdventCalendarInvitationNotification": {
+    "message": " invited"
+  },
+  "verb_for_AdventCalendarItemNotification": {
+    "message": " registered to calendar"
+  },
+  "verb_for_AdventCalendarItemReminderNotification": {
+    "message": " reminded"
+  },
+  "verb_for_CommentMentionNotification": {
+    "message": " mentioned"
+  },
+  "verb_for_FollowingUserNotification": {
+    "message": " followed"
+  },
+  "verb_for_LgtmNotification": {
+    "message": " liked"
+  },
+  "verb_for_PatchAcceptanceNotification": {
+    "message": " accepted patch"
+  },
+  "verb_for_PatchNotification": {
+    "message": " patched"
+  },
+  "verb_for_ProjectPageCommentReactionNotification": {
+    "message": " reacted"
+  },
+  "verb_for_ProjectPageMentionNotification": {
+    "message": " mentioned"
+  },
+  "verb_for_ProjectPageReactionNotification": {
+    "message": " reacted"
+  },
+  "verb_for_PublicDomainArticleMentionNotification": {
+    "message": " mentioned"
+  },
+  "verb_for_PublicReferenceNotification": {
+    "message": " referenced"
+  },
+  "verb_for_ReplyCommentNotification": {
+    "message": " commented"
+  },
+  "verb_for_StockedItemUpdateNotification": {
+    "message": " updated"
+  },
+  "verb_for_StockItemNotification": {
+    "message": " stocked"
+  },
+  "verb_for_TeamArticleCommentReactionNotification": {
+    "message": " reacted"
+  },
+  "verb_for_TeamArticleMentionNotification": {
+    "message": " mentioned"
+  },
+  "verb_for_TeamArticleReactionNotification": {
+    "message": " reacted"
+  },
+  "verb_for_TeamReferenceNotification": {
+    "message": " referenced"
+  },
+  "verb_for_ThankNotification": {
+    "message": " thanked"
+  },
+  "verb_for_ThreadCommentNotification": {
+    "message": " commented"
+  },
+  "verb_for_TweetNotification": {
+    "message": "Your post was tweeted"
+  },
+  "verb_for_unknown_notification_type": {
+    "message": " did something"
+  }
+}

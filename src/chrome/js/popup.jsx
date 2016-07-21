@@ -99,31 +99,7 @@ class NotificationCard extends React.Component {
    * @returns {String}
    */
   getVerb() {
-    return ({
-      AdventCalendarInvitationNotification: 'invited',
-      AdventCalendarItemNotification: 'registered to calendar',
-      AdventCalendarItemReminderNotification: 'reminded',
-      CommentMentionNotification: 'mentioned',
-      FollowingUserNotification: 'followed',
-      LgtmNotification: 'liked',
-      PatchAcceptanceNotification: 'accepted patch',
-      PatchNotification: 'patched',
-      ProjectPageCommentReactionNotification: 'reacted',
-      ProjectPageMentionNotification: 'mentioned',
-      ProjectPageReactionNotification: 'reacted',
-      PublicDomainArticleMentionNotification: 'mentioned',
-      PublicReferenceNotification: 'referenced',
-      ReplyCommentNotification: 'commented',
-      StockedItemUpdateNotification: 'updated',
-      StockItemNotification: 'stocked',
-      TeamArticleCommentReactionNotification: 'reacted',
-      TeamArticleMentionNotification: 'mentioned',
-      TeamArticleReactionNotification: 'reacted',
-      TeamReferenceNotification: 'referenced',
-      ThankNotification: 'thanked',
-      ThreadCommentNotification: 'commented',
-      TweetNotification: 'tweeted',
-    })[this.props.notification.type] || 'did something';
+    return chrome.i18n.getMessage(`verb_for_${this.props.notification.type}`) || chrome.i18n.getMessage("verb_for_unknown_notification_type");
   }
 
   onClick(event) {
@@ -147,20 +123,28 @@ class NotificationCard extends React.Component {
           <i className={`card-icon fa fa-fw fa-${this.getIconName()}`} style={{ backgroundColor: this.getIconColor() }} />
         </div>
         <div className="card-body">
-          <div className="pull-right color-gray margin-left-4">
+          <div className="pull-right color-light-gray font-13 margin-left-4">
             {this.getCreatedAt()}
           </div>
           <div className="margin-bottom-4">
             <img src={this.props.notification.sender.profile_image_url} height="20" width="20" className="avatar-image" />
-            <span className="font-bold margin-right-4">
-              {this.props.notification.sender.url_name}
-            </span>
+            {
+              (() => {
+                if (this.props.notification.sender) {
+                  return(
+                    <span className="font-bold">
+                      {this.props.notification.sender.url_name}
+                    </span>
+                  );
+                }
+              })()
+            }
             {this.getVerb()}
-            <span className="color-gray margin-left-4">
+            <span className="color-light-gray margin-left-4">
               on {this.getTeamName()}
             </span>
           </div>
-          <div className="text-ellipsis" style={{ fontSize: "14px" }}>
+          <div className="color-gray font-13 text-ellipsis">
             {this.props.notification.title}
           </div>
         </div>
@@ -215,37 +199,9 @@ class Container extends React.Component {
   }
 }
 
-/**
- * @returns {Promise}
- */
-const detectLanguageCode = () => {
-  if (chrome.i18n.getUILanguage) {
-    return Promise.resolve(chrome.i18n.getUILanguage());
-  } else {
-    return new Promise((done) => {
-      chrome.i18n.getAcceptLanguages((languageCodes) => {
-        done(languageCodes[0]);
-      });
-    });
-  }
-};
+moment.locale(chrome.i18n.getMessage('currentLanguageCode'));
 
-/**
- * @returns {Promise}
- */
-const loadMomentLocale = () => {
-  return detectLanguageCode().then((languageCode) => {
-    if (languageCode === 'ja') {
-      moment.locale('ja');
-    } else {
-      moment.locale('en');
-    }
-  });
-};
-
-loadMomentLocale().then(() => {
-  ReactDOM.render(
-    <Container />,
-    document.getElementById('container')
-  );
-});
+ReactDOM.render(
+  <Container />,
+  document.getElementById('container')
+);

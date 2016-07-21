@@ -2,9 +2,10 @@
   "manifest_version": 2,
   "name": "Qiita Notifications",
   "version": "0.0.4",
-  "description": "Displays unread Qiita notifications count and list recent notifications.",
+  "description": "__MSG_applicationDescription__",
   "author": "Increments Inc.",
   "short_name": "Qiita Notifications",
+  "default_locale": "en",
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
