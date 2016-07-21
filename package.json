@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/increments/qiita-browser-extensions"
+    "url": "https://github.com/increments/qiita-notifications"
   },
   "keywords": [
     "Qiita",
@@ -32,9 +32,9 @@
   "author": "Increments Inc.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/increments/qiita-browser-extensions/issues"
+    "url": "https://github.com/increments/qiita-notifications/issues"
   },
-  "homepage": "https://github.com/increments/qiita-browser-extensions",
+  "homepage": "https://github.com/increments/qiita-notifications",
   "devDependencies": {
     "babel-core": "^6.10.4",
     "babel-plugin-transform-inline-environment-variables": "^6.8.0",
