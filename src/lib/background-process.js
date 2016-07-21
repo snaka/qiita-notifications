@@ -63,7 +63,7 @@ export default class BackgroundProcess {
     chrome.runtime.onInstalled.addListener(() => {
       chrome.alarms.create("", { periodInMinutes: this.props.timeInterval });
     });
-    chrome.alarms.onAlarm.addListener((alarm) => {
+    chrome.alarms.onAlarm.addListener(() => {
       this.update();
     });
   }
