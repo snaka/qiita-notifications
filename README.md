@@ -1,5 +1,5 @@
 # Qiita Notifications
-The code that powers Qiita Notifications.
+Web browser extensions for Qiita notifications.
 
 ![screenshot](/images/screenshot.png)
 
