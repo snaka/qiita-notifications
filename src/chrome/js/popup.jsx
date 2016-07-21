@@ -72,7 +72,7 @@ class NotificationCard extends React.Component {
       ThankNotification: 'thumbs-up',
       ThreadCommentNotification: 'comment-o',
       TweetNotification: 'twitter',
-    })[this.props.notification.type] || 'question-circle-o';
+    })[this.props.notification.type] || 'question-circle';
   }
 
   /**
@@ -110,7 +110,7 @@ class NotificationCard extends React.Component {
       ThankNotification: 'thanked',
       ThreadCommentNotification: 'commented',
       TweetNotification: 'tweeted',
-    })[this.props.notification.type] || 'question-circle-o';
+    })[this.props.notification.type] || 'did something';
   }
 
   onClick(event) {
