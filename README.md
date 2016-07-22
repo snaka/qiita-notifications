@@ -4,7 +4,10 @@ Web browser extensions for Qiita notifications.
 ![screenshot](/images/screenshot.png)
 
 ## Install
-See https://github.com/increments/qiita-notifications/releases.
+- Google Chrome: [Qiita Notifications - Chrome ウェブストア](https://chrome.google.com/webstore/detail/qiita-notifications/dhcojilojagkionddfbihnkogmjhcgoo)
+- Mozilla Firefox: Coming soon!
+- Opera: Coming soon!
+- Microsoft Edge: Coming soon!
 
 ## Development
 ### Set up
