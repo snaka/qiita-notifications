@@ -9,7 +9,7 @@ const get = (path) => {
     jQuery.ajax({
       credentials: "include",
       method: "GET",
-      type: "json",
+      dataType: "json",
       url: `${getBaseUrl()}${path}`,
     }).done(done).fail(fail);
   });
