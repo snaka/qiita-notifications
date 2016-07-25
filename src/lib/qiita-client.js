@@ -7,9 +7,8 @@ import jQuery from "jquery";
 const get = (path) => {
   return new Promise((done, fail) => {
     jQuery.ajax({
-      credentials: "include",
       method: "GET",
-      type: "json",
+      dataType: "json",
       url: `${getBaseUrl()}${path}`,
     }).done(done).fail(fail);
   });
