@@ -205,3 +205,9 @@ ReactDOM.render(
   <Container />,
   document.getElementById("container")
 );
+
+window.addEventListener("unload", () => {
+  chrome.runtime.getBackgroundPage((background) => {
+    background.process.update();
+  });
+});
