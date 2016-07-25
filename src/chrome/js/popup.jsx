@@ -1,18 +1,31 @@
+import jQuery from "jquery"
 import moment from "moment";
 import React from "react";
 import ReactDOM from "react-dom";
 import "moment/locale/ja";
 
 class NotificationCard extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    if (!this.getIsActive() && nextProps.index === nextProps.selectedNotificationIndex) {
+      if (this.getIsOverflowedToTop()) {
+        jQuery('html, body').scrollTop(jQuery(this.notificationElement).offset().top);
+      } else if (this.getIsOverflowedToBottom()) {
+        jQuery('html, body').scrollTop(jQuery(this.notificationElement).offset().top - jQuery(window).height() + jQuery(this.notificationElement).outerHeight());
+      }
+    }
+  }
+
   /**
    * @returns [String]
    */
   getClassName() {
-    if (this.props.notification.read) {
-      return "card";
-    } else {
-      return "card active";
+    let classNames = ["card"];
+    if (!this.props.notification.read) {
+      classNames.push("active");
+    } else if (this.getIsActive()) {
+      classNames.push("selected");
     }
+    return classNames.join(" ");
   }
 
   /**
@@ -85,6 +98,27 @@ class NotificationCard extends React.Component {
   }
 
   /**
+   * @returns {Boolean}
+   */
+  getIsActive() {
+    return this.props.selectedNotificationIndex === this.props.index;
+  }
+
+  /**
+   * @returns {Boolean}
+   */
+  getIsOverflowedToBottom() {
+    return jQuery(document).scrollTop() + jQuery(window).height() < jQuery(this.notificationElement).offset().top;
+  }
+
+  /**
+   * @returns {Boolean}
+   */
+  getIsOverflowedToTop() {
+    return jQuery(document).scrollTop() > jQuery(this.notificationElement).offset().top + jQuery(this.notificationElement).height();
+  }
+
+  /**
    * @returns {String}
    */
   getTeamName() {
@@ -109,7 +143,21 @@ class NotificationCard extends React.Component {
         {
           detail: {
             notification: this.props.notification,
-            originalEvent: event
+            originalEvent: event,
+          }
+        }
+      )
+    );
+  }
+
+  onMouseOver(event) {
+    this.props.onNotificationCardMousedOver(
+      new CustomEvent(
+        "NotificationCardMousedOver",
+        {
+          detail: {
+            index: this.props.index,
+            originalEvent: event,
           }
         }
       )
@@ -118,7 +166,7 @@ class NotificationCard extends React.Component {
 
   render() {
     return(
-      <div className={this.getClassName()} onClick={this.onClick.bind(this)}>
+      <div className={this.getClassName()} onClick={this.onClick.bind(this)} onMouseOver={this.onMouseOver.bind(this)} ref={(ref) => this.notificationElement = ref}>
         <div className="pull-left margin-right-10">
           <i className={`card-icon fa fa-fw fa-${this.getIconName()}`} style={{ backgroundColor: this.getIconColor() }} />
         </div>
@@ -156,7 +204,10 @@ class NotificationCard extends React.Component {
 class Container extends React.Component {
   constructor(...args) {
     super(...args);
-    this.state = { notifications: null };
+    this.state = {
+      notifications: null,
+      selectedNotificationIndex: -1,
+    };
     chrome.runtime.getBackgroundPage((background) => {
       background.process.update();
       background.process.getNotifications().then((notifications) => {
@@ -165,17 +216,65 @@ class Container extends React.Component {
     });
   }
 
+  componentDidMount() {
+    window.addEventListener("keydown", (event) => {
+      switch (event.keyCode) {
+      case 13:
+        this.onReturnKeyPressed();
+        break;
+      case 38:
+      case 75:
+        this.onUpKeyPressed();
+        break;
+      case 40:
+      case 74:
+        this.onDownKeyPressed();
+        break;
+      }
+    });
+  }
+
+  /**
+   * @returns {Integer}
+   */
+  getNextNotificationIndex() {
+    if (this.state.notifications) {
+      return Math.min(this.state.selectedNotificationIndex + 1, this.state.notifications.length - 1);
+    } else {
+      return -1;
+    }
+  }
+
+  /**
+   * @returns {Integer}
+   */
+  getPreviousNotificationIndex() {
+    if (this.state.notifications) {
+      if (this.state.selectedNotificationIndex === -1) {
+        return this.state.notifications.length - 1;
+      } else {
+        return Math.max(this.state.selectedNotificationIndex - 1, 0);
+      }
+    } else {
+      return -1;
+    }
+  }
+
   render() {
     return(
       <div>
         {
           (() => {
             if (this.state.notifications) {
-              return this.state.notifications.map((notification) => {
+              return this.state.notifications.map((notification, index) => {
                 return(
                   <NotificationCard
+                    key={index}
+                    index={index}
                     notification={notification}
                     onNotificationCardClicked={this.onNotificationCardClicked.bind(this)}
+                    onNotificationCardMousedOver={this.onNotificationCardMousedOver.bind(this)}
+                    selectedNotificationIndex={this.state.selectedNotificationIndex}
                   />
                 );
               });
@@ -188,14 +287,38 @@ class Container extends React.Component {
     );
   }
 
+  onDownKeyPressed() {
+    this.setState({ selectedNotificationIndex: this.getNextNotificationIndex() });
+  }
+
   /**
    * @param {CustomEvent} event
    */
   onNotificationCardClicked(event) {
     chrome.tabs.create({
       active: false,
-      url: event.detail.notification.url
+      url: event.detail.notification.url,
     });
+  }
+
+  /**
+   * @param {CustomEvent} event
+   */
+  onNotificationCardMousedOver(event) {
+    this.setState({ selectedNotificationIndex: event.detail.index });
+  }
+
+  onReturnKeyPressed() {
+    if (this.state.notifications && this.state.selectedNotificationIndex) {
+      chrome.tabs.create({
+        active: false,
+        url: this.state.notifications[this.state.selectedNotificationIndex].url,
+      });
+    }
+  }
+
+  onUpKeyPressed() {
+    this.setState({ selectedNotificationIndex: this.getPreviousNotificationIndex() });
   }
 }
 
