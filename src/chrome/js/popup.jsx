@@ -150,23 +150,9 @@ class NotificationCard extends React.Component {
     );
   }
 
-  onMouseOver(event) {
-    this.props.onNotificationCardMousedOver(
-      new CustomEvent(
-        "NotificationCardMousedOver",
-        {
-          detail: {
-            index: this.props.index,
-            originalEvent: event,
-          }
-        }
-      )
-    );
-  }
-
   render() {
     return(
-      <div className={this.getClassName()} onClick={this.onClick.bind(this)} onMouseOver={this.onMouseOver.bind(this)} ref={(ref) => this.notificationElement = ref}>
+      <div className={this.getClassName()} onClick={this.onClick.bind(this)} ref={(ref) => this.notificationElement = ref}>
         <div className="pull-left margin-right-10">
           <i className={`card-icon fa fa-fw fa-${this.getIconName()}`} style={{ backgroundColor: this.getIconColor() }} />
         </div>
@@ -273,7 +259,6 @@ class Container extends React.Component {
                     index={index}
                     notification={notification}
                     onNotificationCardClicked={this.onNotificationCardClicked.bind(this)}
-                    onNotificationCardMousedOver={this.onNotificationCardMousedOver.bind(this)}
                     selectedNotificationIndex={this.state.selectedNotificationIndex}
                   />
                 );
@@ -299,13 +284,6 @@ class Container extends React.Component {
       active: false,
       url: event.detail.notification.url,
     });
-  }
-
-  /**
-   * @param {CustomEvent} event
-   */
-  onNotificationCardMousedOver(event) {
-    this.setState({ selectedNotificationIndex: event.detail.index });
   }
 
   onReturnKeyPressed() {
