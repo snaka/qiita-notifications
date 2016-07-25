@@ -6,7 +6,7 @@ import "moment/locale/ja";
 
 class NotificationCard extends React.Component {
   componentWillReceiveProps(nextProps) {
-    if (!this.getIsActive() && nextProps.index === nextProps.selectedNotificationIndex) {
+    if (!this.getIsSelected() && nextProps.index === nextProps.selectedNotificationIndex) {
       if (this.getIsOverflowedToTop()) {
         jQuery("html, body").scrollTop(jQuery(this.notificationElement).offset().top);
       } else if (this.getIsOverflowedToBottom()) {
@@ -20,10 +20,10 @@ class NotificationCard extends React.Component {
    */
   getClassName() {
     let classNames = ["card"];
-    if (!this.props.notification.read) {
-      classNames.push("active");
-    } else if (this.getIsActive()) {
+    if (this.getIsSelected()) {
       classNames.push("selected");
+    } else if (!this.props.notification.read) {
+      classNames.push("highlighted");
     }
     return classNames.join(" ");
   }
@@ -100,7 +100,7 @@ class NotificationCard extends React.Component {
   /**
    * @returns {Boolean}
    */
-  getIsActive() {
+  getIsSelected() {
     return this.props.selectedNotificationIndex === this.props.index;
   }
 
