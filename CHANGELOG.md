@@ -1,3 +1,6 @@
+## 0.1.1
+- Support keyboard operations
+
 ## 0.1.0
 - Use `en` as default locale
 - Support Japanese language
