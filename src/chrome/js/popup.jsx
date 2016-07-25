@@ -205,6 +205,13 @@ class Container extends React.Component {
   componentDidMount() {
     window.addEventListener("keydown", (event) => {
       switch (event.keyCode) {
+      case 9:
+        if (event.shiftKey) {
+          this.onUpKeyPressed();
+        } else {
+          this.onDownKeyPressed();
+        }
+        break;
       case 13:
         this.onReturnKeyPressed();
         break;
