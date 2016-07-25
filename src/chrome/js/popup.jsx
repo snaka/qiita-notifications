@@ -1,4 +1,4 @@
-import jQuery from "jquery"
+import jQuery from "jquery";
 import moment from "moment";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -8,9 +8,9 @@ class NotificationCard extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (!this.getIsActive() && nextProps.index === nextProps.selectedNotificationIndex) {
       if (this.getIsOverflowedToTop()) {
-        jQuery('html, body').scrollTop(jQuery(this.notificationElement).offset().top);
+        jQuery("html, body").scrollTop(jQuery(this.notificationElement).offset().top);
       } else if (this.getIsOverflowedToBottom()) {
-        jQuery('html, body').scrollTop(jQuery(this.notificationElement).offset().top - jQuery(window).height() + jQuery(this.notificationElement).outerHeight());
+        jQuery("html, body").scrollTop(jQuery(this.notificationElement).offset().top - jQuery(window).height() + jQuery(this.notificationElement).outerHeight());
       }
     }
   }
