@@ -1,3 +1,4 @@
+import { detectKeyString } from "key-string";
 import jQuery from "jquery";
 import moment from "moment";
 import React from "react";
@@ -204,23 +205,22 @@ class Container extends React.Component {
 
   componentDidMount() {
     window.addEventListener("keydown", (event) => {
-      switch (event.keyCode) {
-      case 9:
-        if (event.shiftKey) {
-          this.onUpKeyPressed();
-        } else {
-          this.onDownKeyPressed();
-        }
-        break;
-      case 13:
-        this.onReturnKeyPressed();
-        break;
-      case 38:
-      case 75:
+      switch (detectKeyString(event)) {
+      case "Shift-Tab":
         this.onUpKeyPressed();
         break;
-      case 40:
-      case 74:
+      case "Tab":
+        this.onDownKeyPressed();
+        break;
+      case "Return":
+        this.onReturnKeyPressed();
+        break;
+      case "K":
+      case "Up":
+        this.onUpKeyPressed();
+        break;
+      case "Down":
+      case "J":
         this.onDownKeyPressed();
         break;
       }
