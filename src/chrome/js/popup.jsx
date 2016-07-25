@@ -294,7 +294,7 @@ class Container extends React.Component {
   }
 
   onReturnKeyPressed() {
-    if (this.state.notifications && this.state.selectedNotificationIndex) {
+    if (this.state.notifications && this.state.notifications[this.state.selectedNotificationIndex]) {
       chrome.tabs.create({
         active: false,
         url: this.state.notifications[this.state.selectedNotificationIndex].url,
