@@ -212,6 +212,7 @@ class Container extends React.Component {
       case "Tab":
         this.onDownKeyPressed();
         break;
+      case "O":
       case "Return":
         this.onReturnKeyPressed();
         break;
