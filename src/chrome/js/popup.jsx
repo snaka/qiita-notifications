@@ -162,13 +162,15 @@ class NotificationCard extends React.Component {
             {this.getCreatedAt()}
           </div>
           <div className="margin-bottom-4">
-            <img src={this.props.notification.sender.profile_image_url} height="20" width="20" className="avatar-image" />
             {
               (() => {
                 if (this.props.notification.sender) {
                   return(
-                    <span className="font-bold">
-                      {this.props.notification.sender.url_name}
+                    <span>
+                      <img src={this.props.notification.sender.profile_image_url} height="20" width="20" className="avatar-image" />
+                      <span className="font-bold">
+                        {this.props.notification.sender.url_name}
+                      </span>
                     </span>
                   );
                 }
