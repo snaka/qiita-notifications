@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Qiita Notifications",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "__MSG_applicationDescription__",
   "author": "Increments Inc.",
   "short_name": "Qiita Notifications",

@@ -1,3 +1,6 @@
+## 0.1.2
+- Fix bug when no sender notification received
+
 ## 0.1.1
 - Support keyboard operations
 
