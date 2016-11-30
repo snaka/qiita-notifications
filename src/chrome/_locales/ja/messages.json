@@ -41,6 +41,9 @@
   "verb_for_PublicDomainArticleMentionNotification": {
     "message": "がmentionされました"
   },
+  "verb_for_PublicLikeNotification": {
+    "message": "がいいね！しました"
+  },
   "verb_for_PublicReferenceNotification": {
     "message": "が言及しました"
   },

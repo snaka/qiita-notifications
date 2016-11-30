@@ -41,6 +41,9 @@
   "verb_for_PublicDomainArticleMentionNotification": {
     "message": " mentioned"
   },
+  "verb_for_PublicLikeNotification": {
+    "message": " liked"
+  },
   "verb_for_PublicReferenceNotification": {
     "message": " referenced"
   },
